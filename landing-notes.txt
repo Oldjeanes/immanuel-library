@@ -1,0 +1,3 @@
+Jawaban no.3 - bagian 1
+1. Jika ada perubahan pada menu navigasi, logo, atau hak cipta footer, hanya perlu mengubahnya di satu file component. Perubahan tersebut akan otomatis diterapkan di seluruh halaman website tanpa harus mengedit setiap file PHP satu per satu.
+2. Bagian yang mengalami masalah adalah sidebar dan juga topbar, karena jika tidak dipisah menjadi file komponen tersendiri (sidebar.php dan topbar.php), kita harus copy-paste kode HTML/PHP sidebar dan topbar tersebut secara berulang-ulang di seluruh file halaman admin.

@@ -1,8 +1,38 @@
 <?php
 
-$categories = [
-  ["id" => 1, "name" => "Fiksi",     "description" => "Novel dan cerita rekaan",        "total_books" => 3],
-  ["id" => 2, "name" => "Sains",     "description" => "Buku ilmu pengetahuan alam",      "total_books" => 0],
-  ["id" => 3, "name" => "Sejarah",   "description" => "Buku sejarah dan biografi",       "total_books" => 1],
-  ["id" => 4, "name" => "Teknologi", "description" => "Buku pemrograman dan teknologi",  "total_books" => 0],
-];
+function getCategories()
+{
+    return [
+        [
+            'id' => 1,
+            'name' => 'Fiksi',
+            'description' => 'Karya sastra rekaan seperti novel, cerpen, dan komik.'
+        ],
+        [
+            'id' => 2,
+            'name' => 'Sains',
+            'description' => 'Buku-buku tentang ilmu pengetahuan alam dan matematika.'
+        ],
+        [
+            'id' => 3,
+            'name' => 'Sejarah',
+            'description' => 'Catatan peristiwa dan perkembangan peradaban masa lalu.'
+        ],
+        [
+            'id' => 4,
+            'name' => 'Teknologi',
+            'description' => 'Buku-buku tentang komputer, jaringan, dan pengembangan perangkat lunak.'
+        ],
+    ];
+}
+
+function getCategory()
+{
+    return [
+        'id' => 1,
+        'name' => 'Fiksi',
+        'description' => 'Karya sastra rekaan seperti novel, cerpen, dan komik.'
+    ];
+}
+
+?>

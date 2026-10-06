@@ -18,9 +18,11 @@
       ?>
 
       <div class="app-content">
-        <form method="" action="">
+        <form action="../../actions/categories/store.php" method="POST">
           <div class="form-card">
-            <div class="form-section-title">Data Kategori</div>
+             <div class="form-section-title">Data Kategori</div>
+          <button type="submit">Simpan</button>
+          </div>
             <div class="form-group">
               <label for="name">Nama Kategori</label>
               <input type="text" id="name" name="name" placeholder="Contoh: Fiksi">

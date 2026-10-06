@@ -8,11 +8,8 @@
 </head>
 <body>
   <?php
-  $category = [
-      "id"          => 1,
-      "name"        => "Fiksi",
-      "description" => "Novel dan cerita rekaan",
-  ];
+    require_once '../../repositories/category-repository.php';
+    $category = getCategory();
   ?>
   <div class="app-shell">
    <?php require __DIR__ . "/../../components/admin/sidebar.php"?>
@@ -25,7 +22,10 @@
       ?>
 
       <div class="app-content">
-        <form method="" action="">
+        <form action="../../actions/categories/update.php" method="POST">
+            <input type="text" name="name" value="<?= $category['name']; ?>">
+            <textarea name="description"><?= $category['description']; ?></textarea>
+            <button type="submit">Simpan Perubahan</button>
           <input type="hidden" name="id" value="<?= $category['id'] ?>">
           <div class="form-card">
             <div class="form-section-title">Data Kategori</div>

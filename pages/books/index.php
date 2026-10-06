@@ -1,3 +1,11 @@
+<?php
+
+require_once __DIR__ . "/../../repositories/book-repository.php";
+$book = getBook();
+$books = getBooks();
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -9,16 +17,6 @@
 </head>
 
 <body>
-  <?php
-  $book = [
-    "id" => 1,
-    "title" => "Laskar Pelangi",
-    "category" => "Fiksi",
-    "year" => 2005,
-    "stock" => 12,
-    "authors" => "Andrea Hirata",
-  ];
-  ?>
   <div class="app-shell">
      <?php require __DIR__ . "/../../components/admin/sidebar.php"?>
 
@@ -78,14 +76,17 @@
                 <td><span class="badge badge-muted"><?= $book['category'] ?></span></td>
                 <td>
                   <div class="chip-list">
-                    <span class="chip"><?= $book['authors'] ?></span>
+                    <?php foreach ($book['authors'] as $author): ?>
+                    <span class="chip"><?= $author ?></span>
+                    <?php endforeach; ?>
                   </div>
                 </td>
                 <td><?= $book['stock'] ?></td>
                 <td>
                   <div class="cell-actions">
                     <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="../../actions/books/destroy.php?id=<?= $book['id']; ?>" 
+                      onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</a>
                   </div>
                 </td>
               </tr>

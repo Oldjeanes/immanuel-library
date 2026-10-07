@@ -42,4 +42,13 @@ function getUser()
     ];
 }
 
+function getProfile()
+{
+    return [
+        "phone" => "081234567890",
+        "address" => "Jl. Ahmad Yani No. 45, Pontianak",
+        "bio" => "Pustakawan yang berdedikasi dan menyukai literasi digital."
+    ];
+}
+
 ?>

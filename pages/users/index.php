@@ -17,8 +17,14 @@
     <?php 
         $pageTitle = "Manajemen Pengguna";
         $pageSubtitle = "Kelola data pengguna, hak akses, dan peran sistem";
-        require __DIR__ . "/../../components/admin/topbar.php";
+
+        require_once __DIR__ . '/../../repositories/user-repository.php';
+        $users = getUsers();
       ?>
+
+    <?php
+      require __DIR__ . "/../../components/admin/topbar.php";
+    ?>
 
       <div class="app-content">
         <div class="toolbar">
@@ -43,28 +49,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div class="cell-primary">
-                    <span class="cell-thumb"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 19.5v-1a4.5 4.5 0 0 0-4.5-4.5h-5A4.5 4.5 0 0 0 5 18.5v1"/><circle cx="12" cy="7.5" r="4"/></svg></span>
-                    <?= $user['name'] ?>
-                  </div>
+              <?php foreach ($users as $user): ?>
+                <tr>
+                  <td><?= $user['id']; ?></td>
+                  <td><?= $user['name']; ?></td>
+                  <td><?= $user['email']; ?></td>
+                  <td><?= $user['role']; ?></td>
+                  <td>
+                    <a href="edit.php?id=<?= $user['id']; ?>">Edit</a>
+                    <a href="../../actions/users/destroy.php?id=<?= $user['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')">Hapus</a>
                 </td>
-                <td><?= $user['email'] ?></td>
-                <td>
-                  <?php if ($user['role'] === 'admin'): ?>
-                    <span class="badge badge-admin">Admin</span>
-                  <?php else: ?>
-                    <span class="badge badge-member">Member</span>
-                  <?php endif; ?>
-                </td>
-                <td>
-                  <div class="cell-actions">
-                    <a href="edit.php?id=<?= $user['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-                  </div>
-                </td>
-              </tr>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
           </table>
         </div>

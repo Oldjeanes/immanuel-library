@@ -12,25 +12,22 @@ $categories = getCategories();
   <link rel="stylesheet" href="../../styles/categories/index.css">
 </head>
 <body>
-  <?php
-  $category = ["id" => 1, "name" => "Fiksi", "description" => "Novel dan cerita rekaan", "total_books" => 3];
-  ?>
   <div class="app-shell">
    <?php require __DIR__ . "/../../components/admin/sidebar.php"?>
 
     <main class="app-main">
-    <?php 
+      <?php 
         $pageTitle = "Manajemen Kategori";
-        $pageSubtitle = "Kelola data penulis yang terdaftar di sistem";
+        $pageSubtitle = "Kelola data kategori buku yang terdaftar di sistem";
         require __DIR__ . "/../../components/admin/topbar.php";
       ?>
 
       <div class="app-content">
         <div class="toolbar">
-          <form method="" action="" class="toolbar-filters">
+          <form method="GET" action="" class="toolbar-filters">
             <div class="search-box">
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-              <input type="text" name="search" class="search-input" placeholder="Cari nama kategori...">
+              <input type="text" name="search" class="search-input" placeholder="Cari nama kategori..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
             </div>
             <button type="submit" class="btn btn-outline btn-sm">Cari</button>
           </form>
@@ -50,15 +47,19 @@ $categories = getCategories();
             <tbody>
               <?php foreach ($categories as $category): ?>
               <tr>
-                <td><?= $category['id']; ?></td>
-                <td><?= $category['name']; ?></td>
-                <td><?= $category['description']; ?></td>
-               <td>
-                  <a href="edit.php?id=<?= $category['id']; ?>">Edit</a>
-                  <a href="../../actions/categories/destroy.php?id=<?= $category['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
-              </td>
-            </tr>
-            <?php endforeach; ?>
+                <td><?= htmlspecialchars($category['name']); ?></td>
+                <td><?= htmlspecialchars($category['description'] ?? '-'); ?></td>
+                <td><?= $category['total_books'] ?? 0; ?></td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="edit.php?id=<?= $category['id']; ?>" class="btn btn-outline btn-sm">Edit</a>
+                    <a href="../../actions/categories/destroy.php?id=<?= $category['id']; ?>" 
+                      class="btn btn-danger btn-sm" 
+                      onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                </div>
+                </td>
+              </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>

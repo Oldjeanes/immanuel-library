@@ -8,10 +8,10 @@
 </head>
 <body>
   <div class="app-shell">
-   <?php require __DIR__ . "/../../components/admin/sidebar.php"?>
+    <?php require __DIR__ . "/../../components/admin/sidebar.php"; ?>
 
     <main class="app-main">
-    <?php 
+      <?php 
         $pageTitle = "Tambah Kategori";
         $pageSubtitle = "Tambahkan kategori buku baru ke dalam sistem";
         require __DIR__ . "/../../components/admin/topbar.php";
@@ -20,15 +20,15 @@
       <div class="app-content">
         <form action="../../actions/categories/store.php" method="POST">
           <div class="form-card">
-             <div class="form-section-title">Data Kategori</div>
-          <button type="submit">Simpan</button>
-          </div>
+            <div class="form-section-title">DATA KATEGORI</div>
+
             <div class="form-group">
-              <label for="name">Nama Kategori</label>
-              <input type="text" id="name" name="name" placeholder="Contoh: Fiksi">
+              <label for="name">NAMA KATEGORI</label>
+              <input type="text" id="name" name="name" placeholder="Contoh: Fiksi" required>
             </div>
+
             <div class="form-group">
-              <label for="description">Deskripsi</label>
+              <label for="description">DESKRIPSI</label>
               <textarea id="description" name="description" rows="3" placeholder="Deskripsi singkat kategori"></textarea>
             </div>
 

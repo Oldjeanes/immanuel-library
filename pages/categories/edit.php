@@ -9,13 +9,14 @@
 <body>
   <?php
     require_once '../../repositories/category-repository.php';
-    $category = getCategory();
+    $id = $_GET['id'] ?? null;
+    $category = getCategory($id);
   ?>
   <div class="app-shell">
    <?php require __DIR__ . "/../../components/admin/sidebar.php"?>
 
     <main class="app-main">
-    <?php 
+      <?php 
         $pageTitle = "Edit Kategori";
         $pageSubtitle = "Perbarui nama dan deskripsi kategori buku";
         require __DIR__ . "/../../components/admin/topbar.php";
@@ -23,19 +24,19 @@
 
       <div class="app-content">
         <form action="../../actions/categories/update.php" method="POST">
-            <input type="text" name="name" value="<?= $category['name']; ?>">
-            <textarea name="description"><?= $category['description']; ?></textarea>
-            <button type="submit">Simpan Perubahan</button>
-          <input type="hidden" name="id" value="<?= $category['id'] ?>">
+          <input type="hidden" name="id" value="<?= htmlspecialchars($category['id'] ?? '') ?>">
+
           <div class="form-card">
             <div class="form-section-title">Data Kategori</div>
+
             <div class="form-group">
               <label for="name">Nama Kategori</label>
-              <input type="text" id="name" name="name" value="<?= $category['name'] ?>">
+              <input type="text" id="name" name="name" value="<?= htmlspecialchars($category['name'] ?? '') ?>" required>
             </div>
+
             <div class="form-group">
               <label for="description">Deskripsi</label>
-              <textarea id="description" name="description" rows="3"><?= $category['description'] ?></textarea>
+              <textarea id="description" name="description" rows="3"><?= htmlspecialchars($category['description'] ?? '') ?></textarea>
             </div>
 
             <div class="form-actions">

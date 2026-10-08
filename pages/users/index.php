@@ -42,10 +42,11 @@
           <table class="data-table">
             <thead>
               <tr>
+                <th>No</th>
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th>Aksi</th>
+                 <th class="text-center">Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -56,8 +57,10 @@
                   <td><?= $user['email']; ?></td>
                   <td><?= $user['role']; ?></td>
                   <td>
-                    <a href="edit.php?id=<?= $user['id']; ?>">Edit</a>
-                    <a href="../../actions/users/destroy.php?id=<?= $user['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')">Hapus</a>
+                    <a href="edit.php?id=<?= $user['id']; ?>" class="btn btn-outline btn-sm">Edit</a>
+                    <a href="../../actions/users/destroy.php?id=<?= $user['id']; ?>" 
+                       class="btn btn-danger btn-sm" 
+                       onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')">Hapus</a>
                 </td>
                 </tr>
             <?php endforeach; ?>

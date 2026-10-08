@@ -1,4 +1,5 @@
 <?php
+echo "<pre>";
 $id = $_GET['id'] ?? null;
 
 if ($id) {
@@ -6,4 +7,6 @@ if ($id) {
 } else {
     echo "ID buku tidak ditemukan.";
 }
+echo "</pre>";
+echo "<br><a href='../../pages/books/index.php'>Kembali ke Manajemen Buku</a>";
 ?>

@@ -38,24 +38,29 @@
           <table class="data-table">
             <thead>
               <tr>
+                <th>No</th>
                 <th>Nama Penulis</th>
                 <th>Jumlah Buku Ditulis</th>
-                <th>Aksi</th>
+                <th class="text-center">Aksi</th>
               </tr>
             </thead>
-            <tbody>
-              <?php foreach ($authors as $author): ?>
-             <tr>
-                <td><?= $author['id']; ?></td>
-                <td><?= $author['name']; ?></td>
-                <td><?= $author['total_books']; ?></td>
-                <td>
-                 <a href="edit.php?id=<?= $author['id']; ?>">Edit</a>
-                  <a href="../../actions/authors/destroy.php?id=<?= $author['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus penulis ini?')">Hapus</a>
-                </td>
-              </tr>
-              <?php endforeach; ?>
-            </tbody>
+          <tbody>
+            <?php foreach ($authors as $index => $author): ?>
+           <tr>
+            <td><?= $index + 1; ?></td>
+            <td><?= htmlspecialchars($author['name']); ?></td>
+            <td><?= $author['total_books'] ?? 0; ?></td>
+            <td>
+              <div class="action-buttons">
+                <a href="edit.php?id=<?= $author['id']; ?>" class="btn btn-outline btn-sm">Edit</a>
+                <a href="../../actions/authors/destroy.php?id=<?= $author['id']; ?>" 
+             class="btn btn-danger btn-sm" 
+             onclick="return confirm('Apakah Anda yakin ingin menghapus penulis ini?')">Hapus</a>
+        </div>
+      </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
           </table>
         </div>
 

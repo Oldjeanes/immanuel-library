@@ -25,7 +25,6 @@
 
       <div class="app-content">
         <form action="../../actions/authors/update.php" method="POST">
-          <input type="text" id="name" name="name" value="<?= $author['name']; ?>">
           <div class="form-card">
             <div class="form-section-title">Data Penulis</div>
             <div class="form-group">

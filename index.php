@@ -1,10 +1,16 @@
+<?php
+$title = "Beranda - Immanuel Library";
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beranda - Perpustakaan Digital</title>
+  <title>
+    <?php echo $title ?>
+  </title>
   <link rel="stylesheet" href="styles/index.css">
 </head>
 
@@ -16,9 +22,9 @@
         Perpustakaan Digital
       </a>
       <div class="nav-links">
-        <a href="/index.php" class="active">Beranda</a>
-        <a href="/pages/books/index.php">Katalog Buku</a>
-        <a href="/pages/authors/index.php">Penulis</a>
+        <a href="/immanuel-library/index.php" class="active">Beranda</a>
+        <a href="/immanuel-library/pages/books/index.php">Katalog Buku</a>
+        <a href="/immanuel-library/pages/authors/index.php">Penulis</a>
       </div>
       <div class="nav-actions">
         <a href="/pages/auth/login.php" class="btn btn-outline btn-sm">Masuk</a>

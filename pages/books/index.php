@@ -1,11 +1,3 @@
-<?php
-
-require_once __DIR__ . "/../../repositories/book-repository.php";
-$book = getBook();
-$books = getBooks();
-
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -17,15 +9,15 @@ $books = getBooks();
 </head>
 
 <body>
+  <?php
+  require '../../repositories/book-repository.php';
+  $books = getBooks();
+  ?>
   <div class="app-shell">
-     <?php require __DIR__ . "/../../components/admin/sidebar.php"?>
+    <?php require '../../components/admin/sidebar.php'; ?>
 
     <main class="app-main">
-      <?php 
-        $pageTitle = "Manajemen Buku";
-        $pageSubtitle = "Kelola daftar kategori dan pengelompokan buku";
-        require __DIR__ . "/../../components/admin/topbar.php";
-      ?>
+      <?php $pageTitle = 'Manajemen Buku'; $pageSubtitle = 'Kelola data buku, kategori, dan penulis'; require '../../components/admin/topbar.php'; ?>
 
       <div class="app-content">
         <div class="toolbar">
@@ -62,6 +54,7 @@ $books = getBooks();
               </tr>
             </thead>
             <tbody>
+              <?php foreach ($books as $book): ?>
               <tr>
                 <td>
                   <div class="cell-primary">
@@ -76,20 +69,20 @@ $books = getBooks();
                 <td><span class="badge badge-muted"><?= $book['category'] ?></span></td>
                 <td>
                   <div class="chip-list">
-                    <?php foreach ($book['authors'] as $author): ?>
-                    <span class="chip"><?= $author ?></span>
+                    <?php foreach ((array) $book['authors'] as $authorName): ?>
+                    <span class="chip"><?= $authorName ?></span>
                     <?php endforeach; ?>
                   </div>
                 </td>
                 <td><?= $book['stock'] ?></td>
                 <td>
                   <div class="cell-actions">
-                    <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="../../actions/books/destroy.php?id=<?= $book['id']; ?>" 
-                      onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</a>
+                    <a href="../../pages/books/edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
+                    <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus buku ini?')">Hapus</a>
                   </div>
                 </td>
               </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>

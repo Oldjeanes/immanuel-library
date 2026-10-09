@@ -39,7 +39,7 @@
     ?>
 
       <div class="app-content">
-        <form method="POST" action="index.php">
+        <form method="POST" action="../../actions/books/update.php">
           <input type="hidden" name="id" value="<?= $book['id'] ?>">
           <div class="form-card" style="margin-bottom:20px;">
             <div class="form-section-title">Data Buku</div>
@@ -95,7 +95,7 @@
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" formaction="../../actions/books/update.php" formmethod="POST" class="btn btn-primary">Simpan Perubahan</button>
+              <button type="submit" name="submit" class="btn btn-primary">Simpan Perubahan</button>
             </div>
           </div>
         </form>

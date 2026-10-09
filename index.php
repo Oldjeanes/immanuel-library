@@ -16,21 +16,7 @@ $title = "Beranda - Immanuel Library";
 
 <body>
   <header>
-    <nav class="navbar">
-      <a href="/index.php" class="brand">
-        <span class="logo-badge">PD</span>
-        Perpustakaan Digital
-      </a>
-      <div class="nav-links">
-        <a href="/immanuel-library/index.php" class="active">Beranda</a>
-        <a href="/immanuel-library/pages/books/index.php">Katalog Buku</a>
-        <a href="/immanuel-library/pages/authors/index.php">Penulis</a>
-      </div>
-      <div class="nav-actions">
-        <a href="/pages/auth/login.php" class="btn btn-outline btn-sm">Masuk</a>
-        <a href="/pages/auth/register.php" class="btn btn-primary btn-sm">Daftar</a>
-      </div>
-    </nav>
+    <?php require_once 'components/landing/header.php'; ?>
   </header>
 
   <!-- ============ HERO ============ -->
@@ -119,8 +105,7 @@ $title = "Beranda - Immanuel Library";
     </div>
   </section>
   <footer class="site-footer">
-    <span>&copy; 2026 Perpustakaan Digital - SMK Kristen Immanuel Pontianak</span>
-    <span>Dibangun dengan HTML, CSS &amp; PHP</span>
+    <?php require_once 'components/landing/footer.php'; ?>
   </footer>
 </body>
 

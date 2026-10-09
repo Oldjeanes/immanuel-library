@@ -3,6 +3,10 @@
     <span class="logo-badge">PD</span>
     Perpustakaan Digital
   </div>
+
+  <?php
+    $currentUri = $_SERVER['REQUEST_URI'];
+  ?>
   <div class="nav-group-label">Menu Utama</div>
   <nav>
     <a href="/immanuel-library/index.php" class="<?= (strpos($currentUri, 'index.php') !== false && strpos($currentUri, '/pages/') === false) ? 'active' : '' ?>">

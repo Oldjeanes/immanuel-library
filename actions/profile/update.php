@@ -1,12 +1,12 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $name = $_POST['name'] ?? '';
     $email = $_POST['email'] ?? '';
     $phone = $_POST['phone'] ?? '';
     $address = $_POST['address'] ?? '';
     $bio = $_POST['bio'] ?? '';
 
-    echo "<h3>Data Profil Berhasil Diperbarui (Simulasi):</h3>";
+    echo "<h3>Data Profil Berhasil Diperbarui (Simulasi)</h3>";
     echo "<pre>";
     print_r([
         'name' => $name,
@@ -17,5 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
     echo "</pre>";
     echo "<br><a href='../../pages/profile/edit.php'>Kembali ke Profil Saya</a>";
+} else {
+    echo "Akses tidak diizinkan!";
 }
 ?>

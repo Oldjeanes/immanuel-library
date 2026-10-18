@@ -1,11 +1,8 @@
 <?php
-$id = $_GET['id'] ?? null;
+if (isset($_GET['id']) && $_SERVER['REQUEST_METHOD'] === "GET") {
+    $id = $_GET['id'];
 
-if ($id) {
-    echo "<h3>Pengguna dengan ID {$id} berhasil dihapus (Simulasi).</h3>";
-} else {
-    echo "<h3>ID Pengguna tidak ditemukan!</h3>";
+    echo "Pengguna dengan id " . htmlspecialchars($id) . " berhasil dihapus.";
 }
 
-echo "<br><a href='../../pages/users/index.php'>Kembali ke Manajemen Pengguna</a>";
 ?>

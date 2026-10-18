@@ -1,9 +1,35 @@
 <?php
-$id = $_GET['id'] ?? null;
+require_once __DIR__ . "/../../config/databases.php";
+if (isset($_GET['id']) && $_SERVER['REQUEST_METHOD'] === "GET") {
 
-if ($id) {
-    echo "Buku dengan ID $id berhasil dihapus (Simulasi).";
-} else {
-    echo "ID buku tidak ditemukan.";
+try {
+
+    $pdo->beginTransaction();
+   $id = $_GET['id'];
+   //delete relation data (Book Author)
+   $query = "delete from book_author where book_id = :book_id";
+   $stmt = $pdo->prepare($query);
+   $stmt->execute([
+        "book_id" => $id
+   ]);
+
+   //delete book data
+   $query = "delete from books where id = :id";
+   $stmt = $pdo->prepare($query);
+   $stmt->execute([
+        "id" => $id
+   ]);
+
+   $pdo->commit();
+
+   header("Location: ../../pages/books/index.php");
+   exit;
+
+} catch (PDDException $e) {
+    $pdo->rollBack();
+    throw $e;
 }
+
+}
+
 ?>

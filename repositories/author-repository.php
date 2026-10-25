@@ -3,14 +3,17 @@
 require_once __DIR__ . "/../config/database.php";
 function getAuthors()
 {
-  global $pdo;
-  $query = "select id, name from authors";
-  $stnt = $pdo->prepare($query);
-  $stnt-> execute();
+    global $pdo;
 
-  $authors = $stnt -> fetchAll();
+    $query = "SELECT a.id, a.name, COUNT(ba.book_id) AS total_books
+              FROM authors a
+              LEFT JOIN book_author ba ON a.id = ba.author_id
+              GROUP BY a.id, a.name";
 
-  return $authors;
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
 }
 
 function getAuthor()

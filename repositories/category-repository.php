@@ -3,15 +3,17 @@ require_once __DIR__ . "/../config/database.php";
 
 function getCategories()
 {
-  global $pdo;
+    global $pdo;
 
-  $query = "select * from categories";
-  $stnt = $pdo->prepare($query);
-  $stnt->execute();
+    $query = "SELECT c.id, c.name, c.description, COUNT(b.id) AS total_books
+              FROM categories c
+              LEFT JOIN books b ON c.id = b.category_id
+              GROUP BY c.id, c.name, c.description";
 
-  $categories = $stnt->fetchAll();
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
 
-  return $categories;
+    return $stmt->fetchAll();
 }
 
 function getCategory()
@@ -23,4 +25,20 @@ function getCategory()
   ];
 
   return $category;
+}
+
+function isCategoryExist($categoryId)
+{
+  global $pdo;
+
+  $query = "select count(id) from categories where id = :category_id";
+
+  $stmt = $pdo->prepare($query);
+  $stmt->execute([
+    'category_id' => $categoryId
+  ]);
+
+  $isCategoryExist = $stmt->fetchColumn() > 0;
+
+  return $isCategoryExist;
 }

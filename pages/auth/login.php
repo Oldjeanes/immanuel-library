@@ -1,13 +1,8 @@
 <?php
-<<<<<<< HEAD
-
-session_start();
-=======
 require_once __DIR__ . "/../../middleware/auth.php";
 session_start();
 requireGuest();
 
->>>>>>> c7f87e2 (feat: implement authorization)
 
 $success = $_SESSION['success'] ?? '';
 $errors = $_SESSION['errors'] ?? '';

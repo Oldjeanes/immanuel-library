@@ -1,10 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-session_start();
-
-=======
->>>>>>> c7f87e2 (feat: implement authorization)
 $user = $_SESSION['user'];
 
 ?>
